@@ -1,21 +1,101 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>speech</title>
-  </head>
-  <body>
-    <main id="app">
-      <button id="speak">Speak</button>
+<html lang="de">
 
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Speech Demo</title>
+</head>
+
+<body>
+  <main id="app">
+    <form id="settings" class="panel">
+      <h2>Einstellungen</h2>
+
+      <div class="select">
+        <label for="lang"> Sprache </label>
+        <select name="lang" id="lang"></select>
+      </div>
+
+      <div class="select">
+        <label for="voice"> Stimme </label>
+        <select name="voice" id="voice"></select>
+      </div>
+
+      <div class="slider">
+        <label for="rate"> Geschwindigkeit </label>
+        <div class="group">
+          <input type="range" name="rate" id="rate" min="0.1" max="3" step="0.1" />
+          <output for="rate"></output>
+        </div>
+      </div>
+
+      <div class="slider">
+        <label for="pitch"> Tonhöhe </label>
+        <div class="group">
+          <input type="range" name="pitch" id="pitch" min="0" max="2" step="0.1" />
+          <output for="pitch"></output>
+        </div>
+      </div>
+
+      <div class="slider">
+        <label for="volume"> Lautstärke </label>
+
+        <div class="group">
+          <input type="range" name="volume" id="volume" min="0" max="1" step="0.1" />
+          <output for="volume"></output>
+        </div>
+      </div>
+
+      <button type="reset">Zurücksetzen</button>
+    </form>
+
+    <section id="recognition" class="panel">
+      <h2>Erkennung</h2>
+
+      <button id="listen" type="button">
+        <span aria-hidden="true">● </span>Zuhören starten
+      </button>
+      <p id="status" aria-live="polite">Bereit</p>
+
+      <p id="interim" aria-live="polite"></p>
+
+      <div>
+        <label for="transcript">Erkannter Text</label>
+        <textarea id="transcript" rows="12" placeholder="Erkannter Text erscheint hier …"></textarea>
+      </div>
+
+      <div class="actions">
+        <button id="read" type="button">
+          <span aria-hidden="true">▶ </span>Vorlesen
+        </button>
+        <button id="stop" type="button">
+          <span aria-hidden="true">■ </span>Stopp
+        </button>
+        <button id="clear" type="button">
+          <span aria-hidden="true">✕ </span>Leeren
+        </button>
+      </div>
+    </section>
+
+    <section id="sample" class="panel">
+      <h2>Beispieltext <small>(markieren → wird vorgelesen)</small></h2>
       <p>
-        Ein Flow eurer Wahl, alle Entscheider:innen gleichzeitig, ich teste live
-        und denke laut mit. Danach wisst ihr alle dasselbe – und entscheidet
-        gemeinsam, ob sich eine tiefere Begleitung lohnt.
+        Einst stritten sich Nordwind und Sonne, wer von ihnen beiden wohl der
+        Stärkere wäre, als ein Wanderer, der in einen warmen Mantel gehüllt
+        war, des Weges daherkam. Sie wurden einig, dass derjenige für den
+        Stärkeren gelten sollte, der den Wanderer zwingen würde, seinen Mantel
+        abzunehmen. Der Nordwind blies mit aller Macht, aber je mehr er blies,
+        desto fester hüllte sich der Wanderer in seinen Mantel ein. Endlich
+        gab der Nordwind den Kampf auf. Nun erwärmte die Sonne die Luft mit
+        ihren freundlichen Strahlen, und schon nach wenigen Augenblicken zog
+        der Wanderer seinen Mantel aus. Da musste der Nordwind zugeben, dass
+        die Sonne von ihnen beiden der Stärkere war.
       </p>
-    </main>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+    </section>
+  </main>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>

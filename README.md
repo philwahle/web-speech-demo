@@ -28,7 +28,7 @@ Der Mikrofonzugriff funktioniert nur in einem sicheren Kontext – also über `h
 
 ## Lokal starten
 
-Voraussetzung: [Node.js](https://nodejs.org/) ab Version 20.
+Voraussetzung: [Node.js](https://nodejs.org/) ab Version 22.
 
 ```sh
 npm install
